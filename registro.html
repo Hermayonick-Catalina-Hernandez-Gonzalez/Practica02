@@ -30,36 +30,47 @@
             <div class="col-md-6">
                 <h2 style="text-align: center;">Registro</h2>
                 <form id="registerForm">
-                    <div class="form-group" >
-                        <label for="username"  style="color: #000000; font-family:Lucida Bright;">Usuario*</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text rounded-2 text-black" style="background-color: #ffffffa4;" id="basic-addon1">@</span>
-                            <input type="text" class="form-control rounded-2 text-black" style="background-color: #ffffff93;"  id="username" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
-                        </div>
-                    </div>
                     <div class="form-group">
-                        <label for="email"  style="color: #000000; font-family:Lucida Bright;">Correo*</label>
-                        <input type="email" class="form-control rounded-2 text-black" style="background-color: #ffffffa4;" id="email" name="email" placeholder="Correo" aria-label="Correo" aria-describedby="basic-addon2" required>
+                        <label for="email" style="color: #000000; font-family:Lucida Bright;">Correo*</label>
+                        <input type="email" class="form-control rounded-2 text-black"
+                            style="background-color: #ffffffa4;" id="email" name="email" placeholder="Correo"
+                            aria-label="Correo" aria-describedby="basic-addon2" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="password"  style="color: #000000; font-family:Lucida Bright;">Contraseña*</label>
-                        <input type="password" class="form-control rounded-2 text-black" style="background-color: #ffffffa4;" id="password" name="password" required>
+                        <label for="password" style="color: #000000; font-family:Lucida Bright;">Contraseña*</label>
+                        <input type="password" class="form-control rounded-2 text-black"
+                            style="background-color: #ffffffa4;" id="password" name="password" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="confirmPassword"  style="color: #000000; font-family:Lucida Bright;">Confirmar Contraseña*</label>
-                        <input type="password" class="form-control rounded-2 text-black" style="background-color: #ffffffa4;" id="confirmPassword" name="confirmPassword" required>
+                        <label for="confirmPassword" style="color: #000000; font-family:Lucida Bright;">Confirmar
+                            Contraseña*</label>
+                        <input type="password" class="form-control rounded-2 text-black"
+                            style="background-color: #ffffffa4;" id="confirmPassword" name="confirmPassword" required>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="firstName"  style="color: #000000; font-family:Lucida Bright;">Nombre y Apellido*</label>
+                        <label for="firstName" style="color: #000000; font-family:Lucida Bright;">Nombre y
+                            Apellido*</label>
                         <div class="input-group">
-                            <input type="text" aria-label="First name"class="form-control rounded-2 text-black" style="background-color: #ffffffa4;" id="firstName" name="firstName" required>
-                            <input type="text" aria-label="Last name" class="form-control rounded-2 text-black" style="background-color: #ffffffa4;" id="lastName" name="lastName" required>
+                            <input type="text" aria-label="First name" class="form-control rounded-2 text-black"
+                                style="background-color: #ffffffa4;" id="firstName" name="firstName" required>
+                            <input type="text" aria-label="Last name" class="form-control rounded-2 text-black"
+                                style="background-color: #ffffffa4;" id="lastName" name="lastName" required>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="gender"  style="color: #000000; font-family:Lucida Bright;">Género*</label>
-                        <select class="form-control rounded-2 text-black" style="background-color: #ffffffa4;" id="gender" name="gender" required>
+                        <label for="username" style="color: #000000; font-family:Lucida Bright;">Usuario*</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text rounded-2 text-black" style="background-color: #ffffffa4;"
+                                id="basic-addon1">@</span>
+                            <input type="text" class="form-control rounded-2 text-black"
+                                style="background-color: #ffffff93;" id="username" name="username"
+                                placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" style="color: #000000; font-family:Lucida Bright;">Género*</label>
+                        <select class="form-control rounded-2 text-black" style="background-color: #ffffffa4;"
+                            id="gender" name="gender" required>
                             <option value="">Seleccione</option>
                             <option value="Hombre">Hombre</option>
                             <option value="Mujer">Mujer</option>
@@ -67,23 +78,28 @@
                             <option value="Prefiero no Decirlo">Prefiero no Decirlo</option>
                             <option value="Otro">Otro</option>
                         </select>
-                        <input type="text" class="form-control mt-2" id="otherGender" name="otherGender" placeholder="Especifique" style="display: none;">
+                        <input type="text" class="form-control mt-2" id="otherGender" name="otherGender"
+                            placeholder="Especifique" style="display: none;">
                     </div>
 
                     <div class="form-group">
-                        <label for="birthDate"  style="color: #000000; font-family:Lucida Bright;">Fecha de Nacimiento*</label>
-                        <input type="date" class="form-control rounded-2 text-black" style="background-color: #ffffffa4;" id="birthDate" name="birthDate" required>
+                        <label for="birthDate" style="color: #000000; font-family:Lucida Bright;">Fecha de
+                            Nacimiento*</label>
+                        <input type="date" class="form-control rounded-2 text-black"
+                            style="background-color: #ffffffa4;" id="birthDate" name="birthDate" required>
                     </div>
 
                     <div class="d-grid gap-2 d-md-block text-center">
-                        <button type="submit" class="btn btn-secondary" style="background-color: #5F4A99;">Registrarse</button>
-                        <button type="button" class="btn btn-secondary" style="background-color: #994a87;" onclick="window.location.href='login.html'">Regresar</button>
+                        <button type="submit" class="btn btn-secondary"
+                            style="background-color: #5F4A99;">Registrarse</button>
+                        <button type="button" class="btn btn-secondary" style="background-color: #994a87;"
+                            onclick="window.location.href='login.html'">Regresar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script> 
+    <script>
         $(document).ready(function () {
             $('#gender').on('change', function () {
                 if ($(this).val() === 'Otro') {
@@ -92,14 +108,14 @@
                     $('#otherGender').hide();
                 }
             });
-        
+
             $('#registerForm').on('submit', function (e) {
                 e.preventDefault();
                 var valid = true;
-        
+
                 // Campos obligatorios
-                var requiredFields = ['#username', '#password', '#confirmPassword', '#email', '#firstName', '#lastName', '#gender', '#birthDate'];
-        
+                var requiredFields = ['#email', '#password', '#confirmPassword', '#firstName', '#lastName', '#username', '#gender', '#birthDate'];
+
                 requiredFields.forEach(function (field) {
                     if ($(field).val() === '') {
                         valid = false;
@@ -107,7 +123,7 @@
                         return false;
                     }
                 });
-        
+
                 // Validar formato de correo electrónico
                 var email = $('#email').val();
                 if (!validateEmail(email)) {
@@ -115,7 +131,7 @@
                     alert('Por favor ingrese un email válido.');
                     return false;
                 }
-        
+
                 // Validar contraseñas coinciden
                 var password = $('#password').val();
                 var confirmPassword = $('#confirmPassword').val();
@@ -124,7 +140,7 @@
                     alert('Las contraseñas no coinciden.');
                     return false;
                 }
-        
+
                 // Validar edad mínima de 18 años
                 var birthDate = new Date($('#birthDate').val());
                 var today = new Date();
@@ -133,19 +149,34 @@
                 if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
                     age--;
                 }
-        
+
                 if (age < 18) {
                     valid = false;
                     alert('Debe tener al menos 18 años para registrarse.');
                     return false;
                 }
-        
+
                 if (valid) {
+                    var usuario = {
+                        email: $('#email').val(),
+                        password: $('#password').val(),
+                        firstName: $('#firstName').val(),
+                        lastName: $('#lastName').val(),
+                        username: $('#username').val(),
+                        gender: $('#gender').val(),
+                        birthDate: $('#birthDate').val()
+                    };
+
+                    // Guardar en localStorage
+                    var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                    usuarios.push(usuario);
+                    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
                     alert('Registro exitoso!');
-                    // Aquí puedes agregar la lógica para enviar el formulario al servidor
+                    window.location.href = 'login.html';
                 }
             });
-        
+
             function validateEmail(email) {
                 var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return re.test(email);
@@ -153,5 +184,4 @@
         });
     </script>
 </body>
-
 </html>
