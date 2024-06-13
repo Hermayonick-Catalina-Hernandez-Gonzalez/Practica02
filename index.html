@@ -117,6 +117,12 @@
 
         $(document).ready(function () {
             $('.like-btn').on('click', function () {
+                var loggedInUser = localStorage.getItem('loggedInUser');
+                if (!loggedInUser) {
+                    alert('Debes iniciar sesión para dar Like');
+                    return;
+                }
+
                 var likeBtn = $(this);
                 var likeText = likeBtn.text();
                 var likeCountElem = likeBtn.closest('.card-body').find('.like-count');
