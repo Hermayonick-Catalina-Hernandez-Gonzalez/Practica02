@@ -47,17 +47,16 @@
             </div>
             <div id="userActions" class="ml-auto d-flex align-items-center">
                 <span id="usernameDisplay" class="text-white mr-3" style="display: none; font-family:Lucida Bright;"></span>
-                <a href="login.html" id="loginBtn" class="btn btn-secondary" style="background-color: #4a9957; font-family:Lucida Bright;">Login</a>
-                <button id="logoutBtn" class="btn btn-secondary" style="background-color: #ab3e3e; font-family:Lucida Bright; display: none;">Logout</button>
+                <a href="login.html" id="loginBtn" class="btn btn-secondary" style="background-color: #4a9957; font-family:Lucida Bright;">Iniciar</a>
+                <button id="logoutBtn" class="btn btn-secondary" style="background-color: #ab3e3e; font-family:Lucida Bright; display: none;">Cerrar Sesión</button>
             </div>
         </div>
     </nav>
     <div class="container mt-5">
         <div class="text-center">
-            <h1 style="color: #000000; font-family:Lucida Bright;">Bienvenidos a Sueños Capturados</h1>
-            <p>¡Envuelve tus recuerdos más tiernos en fotos y videos, compartiéndolos con tus seres queridos y creando juntos una historia de amor y felicidad eterna!</p>
-            <div id="welcomeMessage" style="display: none;">
-                <h2 style="color: #000000; font-family:Lucida Bright;">¡Bienvenido de nuevo!</h2>
+            <div id="welcomeGuestMessage">
+                <h1 style="color: #000000; font-family:Lucida Bright;">Bienvenidos a Sueños Capturados</h1>
+                <p>¡Envuelve tus recuerdos más tiernos en fotos y videos, compartiéndolos con tus seres queridos y creando juntos una historia de amor y felicidad eterna!</p>
             </div>
         </div>
         <div class="row mt-4">
@@ -97,27 +96,27 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var loggedInUser = localStorage.getItem('loggedInUser');
+        $(document).ready(function () {
+            var loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
             if (loggedInUser) {
-                var user = JSON.parse(loggedInUser);
-                document.getElementById('loginBtn').style.display = 'none';
-                document.getElementById('logoutBtn').style.display = 'inline-block';
-                document.getElementById('welcomeMessage').style.display = 'block';
-                document.getElementById('welcomeMessage').textContent = '¡Bienvenido de nuevo, ' + user.username + '!';
-                document.getElementById('usernameDisplay').style.display = 'inline-block';
-                document.getElementById('usernameDisplay').textContent = user.username;
+                $('#loginBtn').hide();
+                $('#logoutBtn').show();
+                $('#welcomeGuestMessage').hide();
+                $('#welcomeMessage').show();
+                $('#welcomeMessage').text('¡Bienvenido de nuevo, ' + loggedInUser.username + '!');
+                $('#usernameDisplay').show().text(loggedInUser.username);
+            } else {
+                $('#welcomeGuestMessage').show();
+                $('#welcomeMessage').hide();
             }
 
-            document.getElementById('logoutBtn').addEventListener('click', function () {
+            $('#logoutBtn').on('click', function () {
                 localStorage.removeItem('loggedInUser');
-                window.location.reload();
+                window.location.href = 'login.html';
             });
-        });
 
-        $(document).ready(function () {
             $('.like-btn').on('click', function () {
-                var loggedInUser = localStorage.getItem('loggedInUser');
                 if (!loggedInUser) {
                     alert('Debes iniciar sesión para dar Like');
                     return;
