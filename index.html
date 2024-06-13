@@ -10,16 +10,17 @@
     <style>
         .media-container {
             width: 100%;
-            height: 300px; 
+            height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .media-container img, .media-container video {
+        .media-container img,
+        .media-container video {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; 
+            object-fit: contain;
         }
     </style>
 </head>
@@ -44,13 +45,20 @@
                     </li>
                 </ul>
             </div>
+            <div id="userActions" class="ml-auto d-flex align-items-center">
+                <span id="usernameDisplay" class="text-white mr-3" style="display: none; font-family:Lucida Bright;"></span>
+                <a href="login.html" id="loginBtn" class="btn btn-secondary" style="background-color: #4a9957; font-family:Lucida Bright;">Login</a>
+                <button id="logoutBtn" class="btn btn-secondary" style="background-color: #ab3e3e; font-family:Lucida Bright; display: none;">Logout</button>
+            </div>
         </div>
     </nav>
     <div class="container mt-5">
         <div class="text-center">
             <h1 style="color: #000000; font-family:Lucida Bright;">Bienvenidos a Sueños Capturados</h1>
             <p>¡Envuelve tus recuerdos más tiernos en fotos y videos, compartiéndolos con tus seres queridos y creando juntos una historia de amor y felicidad eterna!</p>
-            <a href="login.html" class="btn btn-secondary" style="background-color: #5F4A99; font-family:Lucida Bright;">Login</a>
+            <div id="welcomeMessage" style="display: none;">
+                <h2 style="color: #000000; font-family:Lucida Bright;">¡Bienvenido de nuevo!</h2>
+            </div>
         </div>
         <div class="row mt-4">
             <div class="col-md-4">
@@ -63,8 +71,8 @@
                     <div class="card-body">
                         <h5 class="card-title">@hercita</h5>
                         <p class="card-text">Cada instante a tu lado es un recuerdo inolvidable</p>
-                        <p class="card-text"><small class="text-muted">Likes: 120</small></p>
-                        <button class="btn btn-secondary like-btn" style=" background-color: #5F4A99; font-family:Lucida Bright;">Like</button>
+                        <p class="card-text"><small class="text-muted">Likes: <span class="like-count">120</span></small></p>
+                        <button class="btn btn-secondary like-btn" style="background-color: #5F4A99; font-family:Lucida Bright;">Like</button>
                     </div>
                 </div>
             </div>
@@ -76,8 +84,8 @@
                     <div class="card-body">
                         <h5 class="card-title">@alan</h5>
                         <p class="card-text">Te quiero más de lo que las palabras pueden expresar</p>
-                        <p class="card-text"><small class="text-muted">Likes: 95</small></p>
-                        <button class="btn btn-secondary like-btn" style=" background-color: #5F4A99; font-family:Lucida Bright;" >Like</button>
+                        <p class="card-text"><small class="text-muted">Likes: <span class="like-count">95</span></small></p>
+                        <button class="btn btn-secondary like-btn" style="background-color: #5F4A99; font-family:Lucida Bright;">Like</button>
                     </div>
                 </div>
             </div>
@@ -89,17 +97,44 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('.like-btn').on('click', function(){
-                var likeText = $(this).text();
-                if(likeText === 'Like'){
-                    $(this).text('Dislike');
+        document.addEventListener('DOMContentLoaded', function () {
+            var loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                var user = JSON.parse(loggedInUser);
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'inline-block';
+                document.getElementById('welcomeMessage').style.display = 'block';
+                document.getElementById('welcomeMessage').textContent = '¡Bienvenido de nuevo, ' + user.username + '!';
+                document.getElementById('usernameDisplay').style.display = 'inline-block';
+                document.getElementById('usernameDisplay').textContent = user.username;
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', function () {
+                localStorage.removeItem('loggedInUser');
+                window.location.reload();
+            });
+        });
+
+        $(document).ready(function () {
+            $('.like-btn').on('click', function () {
+                var likeBtn = $(this);
+                var likeText = likeBtn.text();
+                var likeCountElem = likeBtn.closest('.card-body').find('.like-count');
+                var likeCount = parseInt(likeCountElem.text());
+
+                if (likeText === 'Like') {
+                    likeCount++;
+                    likeBtn.text('Unlike');
                 } else {
-                    $(this).text('Like');
+                    likeCount--;
+                    likeBtn.text('Like');
                 }
+
+                likeCountElem.text(likeCount);
             });
         });
     </script>
+
 </body>
 
 </html>

@@ -113,9 +113,7 @@
                 e.preventDefault();
                 var valid = true;
 
-                // Campos obligatorios
                 var requiredFields = ['#email', '#password', '#confirmPassword', '#firstName', '#lastName', '#username', '#gender', '#birthDate'];
-
                 requiredFields.forEach(function (field) {
                     if ($(field).val() === '') {
                         valid = false;
@@ -124,7 +122,6 @@
                     }
                 });
 
-                // Validar formato de correo electrónico
                 var email = $('#email').val();
                 if (!validateEmail(email)) {
                     valid = false;
@@ -132,7 +129,6 @@
                     return false;
                 }
 
-                // Validar contraseñas coinciden
                 var password = $('#password').val();
                 var confirmPassword = $('#confirmPassword').val();
                 if (password !== confirmPassword) {
@@ -141,7 +137,6 @@
                     return false;
                 }
 
-                // Validar edad mínima de 18 años
                 var birthDate = new Date($('#birthDate').val());
                 var today = new Date();
                 var age = today.getFullYear() - birthDate.getFullYear();
@@ -167,7 +162,6 @@
                         birthDate: $('#birthDate').val()
                     };
 
-                    // Guardar en localStorage
                     var usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
                     usuarios.push(usuario);
                     localStorage.setItem('usuarios', JSON.stringify(usuarios));

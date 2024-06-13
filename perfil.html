@@ -11,16 +11,17 @@
     <style>
         .media-container {
             width: 100%;
-            height: 300px; 
+            height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .media-container img, .media-container video {
+        .media-container img,
+        .media-container video {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; 
+            object-fit: contain;
         }
     </style>
 </head>
@@ -51,13 +52,14 @@
 
         <div class="row">
             <div class="col-md-3">
-                <img src="./imagenes/perfil.jpg" class="img-fluid rounded-circle" alt="Imagen de Perfil">
-                <h2>@hercita</h2>
-                <p>Hermayonick Hernandez</p>
-                <p>Seguidores: 150 | Seguidos: 180</p>
+                <img src="./imagenes/perfil.jpg" class="img-fluid rounded-circle" alt="Imagen de Perfil" id="profileImage">
+                <h2 id="username">@username</h2>
+                <p id="fullName">Nombre Completo</p>
+                <p id="followers">Seguidores: 0</p>
+                <p id="following">Seguidos: 0</p>
             </div>
             <div class="col-md-9">
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col-md-4">
                         <div class="card">
                             <div class="media-container">
@@ -74,22 +76,35 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="user_image2.jpg" class="card-img-top" alt="Imagen de Usuario">
+                            <div class="media-container">
+                                <img src="./fotos/amix.JPEG" class="card-img-top" alt="Imagen de Usuario">
+                            </div>
                             <div class="card-body">
-                                <p class="card-text">Descripción de la imagen o video compartido.</p>
-                                <p class="card-text"><small class="text-muted">Likes: 95</small></p>
-                                <button class="btn btn-light like-btn">Like</button>
+                                <h5 class="card-title">@hercita</h5>
+                                <p class="card-text">Los mejores momentos los vivos a su lado</p>
+                                <p class="card-text"><small class="text-muted">Likes: 150</small></p>
                             </div>
                         </div>
                     </div>
-                    <!-- Agrega más publicaciones según sea necesario -->
                 </div>
             </div>
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            $('.like-btn').on('click', function () {
+        $(document).ready(function() {
+            var loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+            if (loggedInUser) {
+                $('#username').text('@' + loggedInUser.username);
+                $('#fullName').text(loggedInUser.firstName + ' ' + loggedInUser.lastName);
+                $('#followers').text('Seguidores: ' + loggedInUser.followers);
+                $('#following').text('Seguidos: ' + loggedInUser.following);
+                $('#profileImage').attr('src', './imagenes/perfil.jpg');
+            } else {
+                window.location.href = 'login.html'; // Redirige a la página de inicio de sesión si no hay usuario logueado
+            }
+
+            $('.like-btn').on('click', function() {
                 var likeText = $(this).text();
                 if (likeText === 'Like') {
                     $(this).text('Unlike');
